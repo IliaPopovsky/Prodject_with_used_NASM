@@ -1,4 +1,4 @@
-; file.asm
+; work_with_file.asm
 section .data
 ; Выражения, используемые для условного ассемблирования.
       CREATE             equ    1
