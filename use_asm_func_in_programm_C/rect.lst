@@ -1,0 +1,25 @@
+     1                                  ; rect.asm
+     2                                  section .data
+     3                                  section .bss
+     4                                  section .text
+     5                                  global rarea
+     6                                  rarea:
+     7                                        section .text
+     8 00000000 55                            push  rbp                                ; Пролог функции.
+     9 00000001 4889E5                        mov   rbp, rsp                           ; Пролог функции.
+    10 00000004 4889F8                              mov    rax, rdi
+    11 00000007 48F7EE                              imul   rsi
+    12 0000000A C9                            leave
+    13 0000000B C3                            ret
+    14                                  global rcircum
+    15                                  rcircum:
+    16                                        section .text
+    17 0000000C 55                            push  rbp                                ; Пролог функции.
+    18 0000000D 4889E5                        mov   rbp, rsp                           ; Пролог функции.
+    19 00000010 4889F8                              mov    rax, rdi
+    20 00000013 4801F0                              add    rax, rsi
+    21 00000016 486BC002                            imul   rax, 2
+    22 0000001A C9                            leave
+    23 0000001B C3                            ret       
+    24                                                   
+    25                                              

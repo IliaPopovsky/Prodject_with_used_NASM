@@ -1,0 +1,29 @@
+     1                                  ; sreverse.asm
+     2                                  section .data
+     3                                  section .bss
+     4                                  section .text
+     5                                  global sreverse
+     6                                  sreverse:
+     7 00000000 55                      push  rbp                                ; Пролог функции.
+     8 00000001 4889E5                  mov   rbp, rsp                           ; Пролог функции.
+     9                                  pushing:
+    10 00000004 4889F1                        mov   rcx, rsi
+    11 00000007 4889FB                        mov   rbx, rdi
+    12 0000000A 41BC00000000                  mov   r12, 0
+    13                                        pushLoop:
+    14 00000010 4A8B0423                            mov   rax, qword[rbx+r12]
+    15 00000014 50                                  push  rax
+    16 00000015 49FFC4                              inc   r12
+    17 00000018 E2F6                                loop pushLoop
+    18                                  popping:
+    19 0000001A 4889F1                        mov   rcx, rsi
+    20 0000001D 4889FB                        mov   rbx, rdi
+    21 00000020 41BC00000000                  mov   r12, 0
+    22                                        popLoop:
+    23 00000026 58                                  pop   rax
+    24 00000027 42880423                            mov   byte[rbx+r12], al
+    25 0000002B 49FFC4                              inc   r12
+    26 0000002E E2F6                                loop  popLoop
+    27 00000030 4889F8                  mov rax, rdi
+    28 00000033 C9                      leave
+    29 00000034 C3                      ret 

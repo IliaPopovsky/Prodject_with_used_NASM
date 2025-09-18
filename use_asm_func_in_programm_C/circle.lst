@@ -1,0 +1,28 @@
+     1                                  ; circle.asm
+     2                                  section .data
+     3 00000000 50455254FB210940              pi        dq     3.141592654
+     4                                  section .bss
+     5                                  section .text
+     6                                  global carea
+     7                                  carea:
+     8                                        section .text
+     9 00000000 55                            push  rbp                                ; Пролог функции.
+    10 00000001 4889E5                        mov   rbp, rsp                           ; Пролог функции.
+    11 00000004 F20F100C25-                         movsd  xmm1, qword[pi]
+    11 00000009 [00000000]         
+    12 0000000D F20F59C0                            mulsd  xmm0, xmm0                  ; Радиус в регистре xmm0.
+    13 00000011 F20F59C1                            mulsd  xmm0, xmm1
+    14 00000015 C9                      leave
+    15 00000016 C3                      ret  
+    16                                  global ccircum
+    17                                  ccircum:
+    18                                        section .text
+    19 00000017 55                            push  rbp                                ; Пролог функции.
+    20 00000018 4889E5                        mov   rbp, rsp                           ; Пролог функции.
+    21 0000001B F20F100C25-                         movsd  xmm1, qword[pi]
+    21 00000020 [00000000]         
+    22 00000024 F20F58C0                            addsd  xmm0, xmm0                  ; Радиус в регистре xmm0.
+    23 00000028 F20F59C1                            mulsd  xmm0, xmm1
+    24 0000002C C9                      leave
+    25 0000002D C3                      ret             
+    26                                                
